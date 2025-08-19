@@ -4,8 +4,8 @@ st.markdown("### Welcome to the data viewer of")
 st.markdown("# Defining the heterogeneous molecular landscape of lung cancer cell responses to epigenetic inhibition")
 st.markdown(
     """
-    **Created by Chelsea Lin**\
-    **Schweppe Lab**\
+    **Created by Chelsea Lin**
+    **Schweppe Lab**
     **UW Genome Science**
     """)
 st.markdown("---")
@@ -13,11 +13,21 @@ st.markdown("---")
 st.markdown(
     """
     ### Abstract
-    Epigenetic inhibitors exhibit powerful antiproliferative and anticancer activities. However, cellular responses to small-molecule epigenetic inhibition are heterogeneous and dependent on factors such as the genetic background, metabolic state, and on-/off-target engagement of individual small-molecule compounds. The molecular study of the extent of this heterogeneity often measures changes in a single cell line or using a small number of compounds. To more comprehensively profile the effects of  small-molecule perturbations and their influence on these heterogeneous cellular responses, we present a molecular resource based on the quantification of chromatin, proteome, and transcriptome remodeling due to histone deacetylase inhibitors (HDACi) in non-isogenic cell lines. Through quantitative molecular profiling of 10,621 proteins, these data reveal coordinated molecular remodeling of HDACi treated cancer cells. HDACi-regulated proteins differ greatly across cell lines with  consistent (JUN, MAP2K3, CDKN1A) and divergent (CCND3, ASF1B, BRD7) cell-state effectors. Together these data provide valuable insight into cell-type driven and heterogeneous responses that must be taken into consideration when monitoring molecular perturbations in culture models.
-
+    Epigenetic inhibitors exhibit powerful antiproliferative and anticancer activities. 
+    However, cellular responses to small-molecule epigenetic inhibition are heterogeneous 
+    and dependent on factors such as the genetic background, metabolic state, and on-/off-target engagement 
+    of individual small-molecule compounds. The molecular study of the extent of this heterogeneity often measures 
+    changes in a single cell line or using a small number of compounds. To more comprehensively profile the effects of  
+    small-molecule perturbations and their influence on these heterogeneous cellular responses, we present a molecular 
+    resource based on the quantification of chromatin, proteome, and transcriptome remodeling due to histone deacetylase 
+    inhibitors (HDACi) in non-isogenic cell lines. Through quantitative molecular profiling of 10,621 proteins, these 
+    data reveal coordinated molecular remodeling of HDACi treated cancer cells. HDACi-regulated proteins differ greatly 
+    across cell lines with  consistent (JUN, MAP2K3, CDKN1A) and divergent (CCND3, ASF1B, BRD7) cell-state effectors. 
+    Together these data provide valuable insight into cell-type driven and heterogeneous responses that must be 
+    taken into consideration when monitoring molecular perturbations in culture models.
     """
 )
-
+st.image("data/abstract.png")
 st.markdown(
     """
     ### Introduction
@@ -42,7 +52,5 @@ st.markdown(
     While comprehensive understanding of the pleiotropic molecular consequences remains elusive (Miyanaga et al., 2008), treatment of cells with HDACi induces expression of p21/CDKN1a leading to cell cycle arrest (Richon et al., 1996; Xiao et al., 1999), alters expression of c-Jun (Vrana et al., 1999) and the apoptotic regulators Bcl-2 and Bcl-xL (X. X. Cao et al., 2001; Fandy & Srivastava, 2006), attenuates AKT/mTOR signaling leading to autophagy (Y.-L. Liu et al., 2010), and suppresses IFN-mediated signaling (Shulak et al., 2014). Recent chemoproteomics analyses have also revealed that heterogeneous responses to HDAC inhibition may be driven in part by the abundance of HDAC protein complex members and the engagement of off-target HDACi binders such as MBLAC2 (Lechner et al., 2022). Thus, these effects have been shown to be both cell-type dependent and cell-type independent, further confounding our understanding of the molecular consequences of HDACi cellular treatments. 
     
     Here, we set out to determine the effects of the HDACi treatment on proteome remodeling in non-isogenic cell lines. In particular we focused on cell treatments with well established HDACi compounds to enable comparative analyses to previous datasets such as DeepCoverMOA and decryptE—including, belinostat, CUDC-101, trichostatin A (TSA), panobinostat, abexinostat and vorinostat (SAHA). We did this in the context of a genetically diverse panel of lung cancer cell lines with KRas, EGFR, TP53, CDKN1A, STK11 mutations and integrated proteomic, phosphoproteomic, and transcriptomics to establish a resource to explore drivers of the heterogeneous HDACi responses in these cells. Quantification of histone modifications status in multiple cell lines and thermal stability analyses then allowed us to determine the molecular linkage and effects of on-target and off-target protein engagement with HDAC inhibitors. These data represent an important resource to understand how chemical perturbation analyses are affected by preclinical cell line choice and exploration of how cellular diversity affects the characterization of small molecule compound mechanisms of action.
-    
-
-    """
+   """
 )

@@ -20,7 +20,7 @@ with col2.container(border=True,height = 300):
     fc_thresh = st.selectbox("X Cutoff (FC)", (1.1,1.25,1.5,1.75,2,2.5,3,5), index = 4)
     up_thresh = np.log2(fc_thresh)
     down_thresh = -np.log2(fc_thresh)
-    p_thresh = st.selectbox("Y Cutoff (adjust p value)", (0.001, 0.01, 0.05, 0.1,1), index = 2)
+    p_thresh = st.selectbox("Y Cutoff (adjust p value)", (0.001, 0.01, 0.05, 0.1,1), index = 4)
 
 with col3.container(border=True, height=300):
      st.header('Enrichment')

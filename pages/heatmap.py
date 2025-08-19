@@ -18,7 +18,7 @@ with col1.container(border=True, height = 400):
     fc_thresh = st.selectbox("Fold Change Threshold", (1.1,1.25,1.5,1.75,2,2.5,3,5), index = 4)
     up_thresh = np.log2(fc_thresh)
     down_thresh = -np.log2(fc_thresh)
-    p_thresh = st.selectbox("Adjust p value Threshold", (0.001, 0.01, 0.05, 0.1,1), index = 2)
+    p_thresh = st.selectbox("Adjust p value Threshold", (0.001, 0.01, 0.05, 0.1,1), index = 4)
 with col2.container(border=True, height = 400):
     st.header('Summary')
     select_data = df[df['Site'].isin(selected_protein)]
@@ -40,8 +40,7 @@ st.header('Heatmap')
 length = len(selected_protein)
 col3, col4 = st.columns([19, 1], gap="small")
 
-with col3.container(border=False):
-    
+with col3.container(border=False):    
     select_data = df[df['Site'].isin(selected_protein)]
     length = len(selected_protein)
     pivot_data = select_data.pivot_table(index='Site', columns=["Line",'Drug'], values="log2FC")

@@ -7,6 +7,7 @@ pages = {
     "Data viewer": [
         st.Page("pages/volcanoplot.py", title="Volcano plot"),
         st.Page('pages/heatmap.py', title="Heatmap"),
+        st.Page('pages/correlation.py', title="Protein-Protein correlation"),
     ]
 
 }
