@@ -4,8 +4,10 @@ st.markdown("### Welcome to the data viewer of")
 st.markdown("# Defining the heterogeneous molecular landscape of lung cancer cell responses to epigenetic inhibition")
 st.markdown(
     """
-    **Created by Chelsea Lin**
     **Schweppe Lab**
+    """)
+st.markdown(
+    """
     **UW Genome Science**
     """)
 st.markdown("---")
@@ -31,9 +33,9 @@ st.image("data/abstract.png")
 st.markdown(
     """
     ### Introduction
-    Deconvoluting the myriad effects downstream of small molecule perturbations is essential to therapeutic development. Whole proteome and transcriptome analyses of these perturbations can validate and identify proposed mechanisms of action and identify cellular effects for therapeutics and tool compounds. To date, however, many large-scale proteome analyses of drug perturbations have been limited to a single  cell line treated with a cohort of small-molecule tool compounds and therapeutic drugs (Supplementary table 1). The selection of  cell lines in these studies has been in part a practical consideration as each new cell line included leads to a rapid expansion in the number of samples that must be processed and compared. Unfortunately, this often means sacrificing understanding of the diverse molecular contexts of different cellular models to enable the analysis of larger cohorts of small-molecule compounds (P.-H. Chen et al., 2019).
-    
-    Supplementary Table 1. large-scale analyses of drug perturbations.
+    Deconvoluting the myriad effects downstream of small molecule perturbations is essential to therapeutic development. Whole proteome and transcriptome analyses of these perturbations can validate and identify proposed mechanisms of action and identify cellular effects for therapeutics and tool compounds. To date, however, many large-scale proteome analyses of drug perturbations have been limited to a single  cell line treated with a cohort of small-molecule tool compounds and therapeutic drugs (Table 1). The selection of  cell lines in these studies has been in part a practical consideration as each new cell line included leads to a rapid expansion in the number of samples that must be processed and compared. Unfortunately, this often means sacrificing understanding of the diverse molecular contexts of different cellular models to enable the analysis of larger cohorts of small-molecule compounds (P.-H. Chen et al., 2019).
+
+    Table 1. large-scale analyses of drug perturbations.
     |Name|Type|Cell line|No. of drugs|Drug Concentration|Duration|Reference|
     |---|---|---|---|---|---|---|
     |This dataset|Proteomics|A549, H292, HCT116, PC9, PSC1|6|10 uM|24h|

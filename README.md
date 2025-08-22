@@ -4,14 +4,13 @@ An interactive web application for exploring lung cancer cell responses to epige
 
 ## Project Overview
 
-This data viewer presents a molecular resource based on the quantification of chromatin, proteome, and transcriptome remodeling due to histone deacetylase inhibitors (HDACi) in non-isogenic cell lines. The application provides interactive visualizations for exploring:
+This data viewer presents a molecular resource based on the quantification of proteome, and phosphoproteome remodeling due to histone deacetylase inhibitors (HDACi) in non-isogenic cell lines. The application provides interactive visualizations for exploring:
 
 - **Volcano plots** - Differential protein expression analysis
 - **Heatmaps** - Protein expression patterns across conditions  
 - **Correlation plots** - Protein-protein correlation analysis
 - **Gene set enrichment** - Pathway and functional enrichment analysis
 
-**Created by Chelsea Lin, Schweppe Lab, UW Genome Science**
 
 ## Features
 
