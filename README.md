@@ -48,7 +48,28 @@ The web application includes several interactive visualization pages:
 
 ## Running the Application
 
-To start the Streamlit web application:
+### Option 1: Docker (Recommended)
+
+The easiest way to run the application is using Docker:
+
+1. **Build and run with Docker Compose:**
+   ```bash
+   docker compose up
+   ```
+   
+   *Note: If you have Docker Compose V1, use `docker-compose up` instead.*
+
+2. **Or build and run with Docker directly:**
+   ```bash
+   docker build -t 57_dataviewer .
+   docker run -p 3838:3838 57_dataviewer
+   ```
+
+The application will be available at `http://localhost:3838`.
+
+### Option 2: Local Python Installation
+
+To start the Streamlit web application directly:
 
 ```bash
 streamlit run dataviewer.py
