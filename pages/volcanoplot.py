@@ -46,8 +46,8 @@ with tab1:
     #enrichr
     # Enrichment method selection
     st.header('Enrichment')
-    methodinput = st.selectbox('Select an enrichment method', ('KEGG','GO:MF','GO:BP','GO:CC','Hallmarks of Cancer'))
-    methoddic = {'KEGG':'KEGG_2021_Human','BP':'GO_Biological_Process_2021','CC':'GO_Cellular_Component_2021','MF':'GO_Molecular_Function_2021','Hallmark':'MSigDB_Hallmark_2020'}
+    methodinput = st.selectbox('Select an enrichment method', ('KEGG','GO:MF','GO:BP','GO:CC','Hallmark of Cancer'))
+    methoddic = {'KEGG':'KEGG_2021_Human','GO:BP':'GO_Biological_Process_2021','GO:CC':'GO_Cellular_Component_2021','GO:MF':'GO_Molecular_Function_2021','Hallmark of Cancer':'MSigDB_Hallmark_2020'}
     enrmethod = methoddic[methodinput]
 
     upenr = gp.enrichr(gene_list= upgene,
