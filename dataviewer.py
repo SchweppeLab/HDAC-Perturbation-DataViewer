@@ -2,7 +2,7 @@ import streamlit as st
 
 pages = {
     "Homepage": [
-        st.Page("pages/homepage.py", title="Welcome to 2415 dataviewer"),
+        st.Page("pages/homepage.py", title="Welcome to HDACi perturbation dataviewer!"),
     ],
     "Data viewer": [
         st.Page("pages/volcanoplot.py", title="Volcano plot"),
