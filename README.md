@@ -35,47 +35,132 @@ The web application includes several interactive visualization pages:
 
 ## Installation
 
+### Prerequisites
+
+- **For Docker (Recommended):**
+  - [Docker](https://docs.docker.com/get-docker/) (version 20.10 or later)
+  - [Docker Compose](https://docs.docker.com/compose/install/) (usually included with Docker Desktop)
+
+- **For Local Installation:**
+  - Python 3.11 or later
+  - pip package manager
+
+### Setup Instructions
+
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/SchweppeLab/57_dataViewer.git
    cd 57_dataViewer
    ```
 
-2. **Install dependencies:**
+2. **Install dependencies (for local installation only):**
    ```bash
    pip install -r requirements.txt
    ```
+   
+   *Note: If using Docker, dependencies are automatically installed in the container.*
 
 ## Running the Application
 
 ### Option 1: Docker (Recommended)
 
-The easiest way to run the application is using Docker:
+Docker provides an isolated, consistent environment with all dependencies pre-installed. This is the easiest and most reliable way to run the application.
 
-1. **Build and run with Docker Compose:**
+#### Using Docker Compose (Easiest)
+
+1. **Start the application:**
    ```bash
    docker compose up
    ```
    
    *Note: If you have Docker Compose V1, use `docker-compose up` instead.*
 
-2. **Or build and run with Docker directly:**
+   The first time you run this command, Docker will:
+   - Build the image (may take a few minutes)
+   - Install all Python dependencies
+   - Start the application
+
+2. **Access the application:**
+   
+   Open your web browser and navigate to `http://localhost:3838`
+
+3. **Stop the application:**
+   
+   Press `Ctrl+C` in the terminal, or in a new terminal run:
+   ```bash
+   docker compose down
+   ```
+
+4. **View logs:**
+   ```bash
+   docker compose logs -f
+   ```
+
+#### Using Docker Directly
+
+If you prefer not to use Docker Compose:
+
+1. **Build the Docker image:**
    ```bash
    docker build -t 57_dataviewer .
+   ```
+
+2. **Run the container:**
+   ```bash
    docker run -p 3838:3838 57_dataviewer
    ```
 
-The application will be available at `http://localhost:3838`.
+3. **Access the application:**
+   
+   Open your web browser and navigate to `http://localhost:3838`
+
+4. **Stop the container:**
+   
+   Press `Ctrl+C` in the terminal, or find the container ID and stop it:
+   ```bash
+   docker ps
+   docker stop <container_id>
+   ```
+
+#### Docker Configuration Details
+
+The Docker setup includes:
+- **Base Image**: Python 3.11 slim (lightweight and optimized)
+- **Port**: 3838 (mapped to host port 3838)
+- **Data Volume**: The `data/` directory is mounted as read-only, allowing data updates without rebuilding
+- **Auto-restart**: Container restarts automatically unless manually stopped (Docker Compose only)
+- **Environment**: Streamlit configured for headless operation suitable for containers
 
 ### Option 2: Local Python Installation
 
-To start the Streamlit web application directly:
+To run the application directly with Python (without Docker):
 
-```bash
-streamlit run dataviewer.py
-```
+1. **Ensure dependencies are installed:**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-The application will automatically open in your default web browser at `http://localhost:8501`.
+2. **Start the Streamlit web application:**
+   ```bash
+   streamlit run dataviewer.py
+   ```
+
+   The application will automatically open in your default web browser at `http://localhost:8501`.
+
+### Troubleshooting
+
+**Docker Issues:**
+- **Port already in use**: If port 3838 is already in use, you can change it in `docker-compose.yml` or use a different port:
+  ```bash
+  docker run -p 8080:3838 57_dataviewer
+  ```
+- **Permission denied**: On Linux, you may need to run Docker commands with `sudo` or add your user to the docker group
+- **Container won't start**: Check logs with `docker compose logs` or `docker logs <container_id>`
+- **Changes not reflected**: If you modify the code, rebuild with `docker compose up --build`
+
+**Python Issues:**
+- **Module not found**: Ensure all dependencies are installed with `pip install -r requirements.txt`
+- **Port 8501 in use**: Streamlit will automatically try the next available port
 
 ## How Streamlit and Plotly Work Together
 
