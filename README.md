@@ -207,7 +207,7 @@ The application uses proteomics and phosphoproteomics data from lung cancer cell
 
 ## Contributing
 
-This project is part of ongoing research at the Schweppe Lab. For questions or contributions, please contact the lab.
+This project is part of ongoing research at the Schweppe Lab under an MIT license. For questions or contributions, please contact the lab.
 
 ## License
 
