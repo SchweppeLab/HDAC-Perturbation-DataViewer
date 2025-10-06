@@ -53,11 +53,13 @@ with col3.container(border=False):
                     row_cluster=True,
                     col_cluster=False,
                     linewidth=.5,
-                    fmt = '.1f', cbar = False,figsize=(10, length/2+1),
+                    fmt = '.1f',
+                    cbar = False,
+                    figsize=(20, (length/2+1)*2),
                     center = 0,vmin = -2, vmax = 2,
                     annot_kws={"size": 6})
     fig.cax.set_visible(False)
     fig.cax.xaxis.tick_top()
-    st.pyplot(fig)
+    st.pyplot(fig, use_container_width=False)
 with col4.container(border=False):
     st.image("data/heatmap_color bar.png")

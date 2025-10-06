@@ -25,6 +25,7 @@ with col1.container(border=True, height = 800):
     corrdata['abs_r'] = corrdata['Pearson r'].abs()
     corrdata = corrdata.sort_values(by='abs_r', ascending=False)
     st.dataframe(corrdata['Pearson r'])
+    
 with col2.container(border=True, height = 800):
     st.header('Correlation Plot')
     selected_protein2 = st.selectbox("Select Another Protein or Phosphosite", select_list, index=select_list.index('FUCA1'))

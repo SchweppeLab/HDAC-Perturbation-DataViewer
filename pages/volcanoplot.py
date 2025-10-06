@@ -9,7 +9,7 @@ st.set_page_config(page_title="Drug Response Explorer", layout="wide")
 st.title("Drug Response Explorer for Lung Cancer Cell Lines")
 
 # Load data
-col1, col2, col3 = st.columns(3)
+col1, col2 = st.columns(2)
 with col1.container(border=True, height = 300):
     st.header('Filter')
     selected_drug = st.selectbox("Select a Drug", load_list('drug'),index = 1)
@@ -17,18 +17,12 @@ with col1.container(border=True, height = 300):
 
 with col2.container(border=True,height = 300):
     st.header('Threshold')
-    fc_thresh = st.selectbox("X Cutoff (FC)", (1.1,1.25,1.5,1.75,2,2.5,3,5), index = 4)
+    fc_thresh = st.selectbox("X Cutoff (FC)", (1.1,1.25,1.5,1.75,2,2.5,3,5), index = 2)
     up_thresh = np.log2(fc_thresh)
     down_thresh = -np.log2(fc_thresh)
-    p_thresh = st.selectbox("Y Cutoff (adjust p value)", (0.001, 0.01, 0.05, 0.1,1), index = 4)
+    p_thresh = st.selectbox("Y Cutoff (adjust p value)", (0.001, 0.01, 0.05, 0.1,1), index = 3)
 
-with col3.container(border=True, height=300):
-     st.header('Enrichment')
-     methodinput = st.selectbox('Selet an enrichment method', ('KEGG','MF','BP','CC','Hallmark'))
-methoddic = {'KEGG':'KEGG_2021_Human','BP':'GO_Biological_Process_2021','CC':'GO_Cellular_Component_2021','MF':'GO_Molecular_Function_2021','Hallmark':'MSigDB_Hallmark_2020'}
-enrmethod = methoddic[methodinput]
-
-tab1, tab2, tab3 = st.tabs(['Total','Phos','Total vs Phos'])
+tab1, tab2, tab3 = st.tabs(['Total Protein Abundance','Total Protein Abundance vs Phosphosite Abundance', 'Phosphosite Abundance',])
 
 with tab1:
     df = load_data('total')
@@ -48,6 +42,13 @@ with tab1:
     )
     fig_volcano.update_layout(height=600)
     st.plotly_chart(fig_volcano)
+    
+    #enrichr
+    # Enrichment method selection
+    st.header('Enrichment')
+    methodinput = st.selectbox('Select an enrichment method', ('KEGG','GO:MF','GO:BP','GO:CC','Hallmarks of Cancer'))
+    methoddic = {'KEGG':'KEGG_2021_Human','BP':'GO_Biological_Process_2021','CC':'GO_Cellular_Component_2021','MF':'GO_Molecular_Function_2021','Hallmark':'MSigDB_Hallmark_2020'}
+    enrmethod = methoddic[methodinput]
 
     upenr = gp.enrichr(gene_list= upgene,
                         organism='human',
@@ -55,6 +56,7 @@ with tab1:
                         outdir= None,
                         background= None,
     ).results[['Term','Overlap', 'P-value','Adjusted P-value']]
+    upenr = upenr[upenr['Adjusted P-value'] < 0.05]
 
     downenr = gp.enrichr(gene_list= downgene,
                         organism='human',
@@ -62,16 +64,17 @@ with tab1:
                         outdir= None,
                         background= None,
     ).results[['Term','Overlap', 'P-value','Adjusted P-value']]
+    downenr = downenr[downenr['Adjusted P-value'] < 0.05]
 
     col4, col5 = st.columns(2)
 
-    col4.write(f'{downno} Down Regulated Proteins')
-    col4.dataframe(downenr)
+    col4.write(f'Enrichment analysis for {downno} down regulated proteins')
+    col4.dataframe(downenr, hide_index=True)
 
-    col5.write(f'{upno} Up Regulated Proteins')
-    col5.dataframe(upenr)
+    col5.write(f'Enrichment analysis for {upno} up regulated proteins')
+    col5.dataframe(upenr, hide_index=True)
 
-with tab2:
+with tab3:
     df2 = load_data('phos')
 # Volcano Plot
     volcano_df2 = df2[(df2["Drug"] == selected_drug) & (df2["Line"] == selected_line)].copy()
@@ -86,7 +89,7 @@ with tab2:
     fig_volcano2.update_layout(height=600)
     st.plotly_chart(fig_volcano2)
 
-with tab3:
+with tab2:
     combinedata= volcano_df2[['Gene','Site','log2FC']].join(volcano_df[['Gene','log2FC']].set_index('Gene'), on='Gene',rsuffix ='_total',lsuffix = '_phos')
     combinedata['cluster']  = np.select(
         [(combinedata['log2FC_total'] >-1)&(combinedata['log2FC_total'] <1)&(combinedata['log2FC_phos'] >1),
@@ -121,4 +124,5 @@ with tab3:
         y0 =1, y1 = 1,
         line = dict(color = 'gray', dash = 'dash') 
     )
+    combine_fig.update_layout(height=600)
     st.plotly_chart(combine_fig)
