@@ -12,7 +12,7 @@ st.markdown(
     """)
 st.markdown(
     """
-    **UW Genome Science**
+    **UW Genome Sciences**
     """)
 st.markdown("---")
 

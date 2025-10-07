@@ -23,6 +23,8 @@ def load_data(dataset):
         total['Site'] =total['Gene']
         phos = phos[['Gene','Uniprot','Site','Line','Drug','log2FC','padj','lgpadj']]
         df = pd.concat([total, phos], ignore_index=True)
+    elif dataset == 'ksea':
+        df = pd.read_csv('data/ksea_scores.csv')
     else:
         raise ValueError(f"Unknown dataset name: {dataset}")
     return df

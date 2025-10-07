@@ -17,10 +17,10 @@ with col1.container(border=True, height = 300):
 
 with col2.container(border=True,height = 300):
     st.header('Threshold')
-    fc_thresh = st.selectbox("X Cutoff (FC)", (1.1,1.25,1.5,1.75,2,2.5,3,5), index = 2)
+    fc_thresh = st.selectbox("X Cutoff (FC)", (1.1,1.25,1.5,1.75,2,2.5,3,5), index = 4)
     up_thresh = np.log2(fc_thresh)
     down_thresh = -np.log2(fc_thresh)
-    p_thresh = st.selectbox("Y Cutoff (adjust p value)", (0.001, 0.01, 0.05, 0.1,1), index = 3)
+    p_thresh = st.selectbox("Y Cutoff (adjust p value)", (0.001, 0.01, 0.05, 0.1,1), index = 4)
 
 tab1, tab2, tab3 = st.tabs(['Total Protein Abundance','Total Protein Abundance vs Phosphosite Abundance', 'Phosphosite Abundance',])
 
@@ -88,6 +88,12 @@ with tab3:
     )
     fig_volcano2.update_layout(height=600)
     st.plotly_chart(fig_volcano2)
+
+    st.header('KSEA')
+    ksea_df = load_data('ksea')
+    ksea_selected = ksea_df[(ksea_df["Drug"] == selected_drug) & (ksea_df["Line"] == selected_line)][['Kinase.Gene','Enrichment','z.score','p.value','FDR']]
+    ksea_selected.columns = ['Kinase','Enrichment','z score','P-value','Adjusted P-value']
+    st.dataframe(ksea_selected.set_index('Kinase'), hide_index=False)
 
 with tab2:
     combinedata= volcano_df2[['Gene','Site','log2FC']].join(volcano_df[['Gene','log2FC']].set_index('Gene'), on='Gene',rsuffix ='_total',lsuffix = '_phos')
