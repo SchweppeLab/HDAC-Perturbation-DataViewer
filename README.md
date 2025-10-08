@@ -3,11 +3,13 @@
 An interactive web application for exploring lung cancer cell responses to epigenetic inhibition, built with **Streamlit** and **Plotly**.
 
 ## Project Overview
-The application uses proteomics and phosphoproteomics data from lung cancer cell lines treated with various histone deacetylase inhibitors (HDACi:
+The application uses proteomics and phosphoproteomics data from lung cancer cell lines treated with various histone deacetylase inhibitors (HDACi):
 
 - **Cell lines**: A549, H292, HCT116, PC9, PSC1
 - **Drugs**: Ralimetinib, CUDC101, Abexinostat, Vorinostat, TSA, Panobinostat, Belinostat
 - **Data types**: Total protein expression, phosphorylation sites, viability measurements
+
+The preprint can be found at [bioRxiv](https://doi.org/10.1101/2024.05.23.592075)
 
 ## Features
 
