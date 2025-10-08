@@ -1,28 +1,26 @@
-# 57_dataViewer
+# HDAC  Perturbation Data viewer
 
 An interactive web application for exploring lung cancer cell responses to epigenetic inhibition, built with **Streamlit** and **Plotly**.
 
 ## Project Overview
+The application uses proteomics and phosphoproteomics data from lung cancer cell lines treated with various histone deacetylase inhibitors (HDACi:
 
-This data viewer presents a molecular resource based on the quantification of proteome, and phosphoproteome remodeling due to histone deacetylase inhibitors (HDACi) in non-isogenic cell lines. The application provides interactive visualizations for exploring:
-
-- **Volcano plots** - Differential protein expression analysis
-- **Heatmaps** - Protein expression patterns across conditions  
-- **Correlation plots** - Protein-protein correlation analysis
-- **Gene set enrichment** - Pathway and functional enrichment analysis
-
+- **Cell lines**: A549, H292, HCT116, PC9, PSC1
+- **Drugs**: Ralimetinib, CUDC101, Abexinostat, Vorinostat, TSA, Panobinostat, Belinostat
+- **Data types**: Total protein expression, phosphorylation sites, viability measurements
 
 ## Features
 
 The web application includes several interactive visualization pages:
 
 1. **Homepage** - Project overview and abstract
-2. **Volcano Plot** - Interactive scatter plots showing differential protein expression with:
+2. **Correlation** - Protein-protein correlation analysis with interactive scatter plots
+3. **Volcano Plot** - Interactive scatter plots showing differential protein expression with:
+   - Support for both total protein and phosphorylation data
    - Customizable fold-change and p-value thresholds
    - Gene set enrichment analysis (KEGG, GO, Hallmark)
-   - Support for both total protein and phosphorylation data
-3. **Heatmap** - Clustered heatmaps of protein expression across cell lines and drugs
-4. **Correlation** - Protein-protein correlation analysis with interactive scatter plots
+   - Kinase-Substrate Enrichment Analysis (KSEA)
+4. **Heatmap** - Clustered heatmaps of protein expression across cell lines and drugs
 
 ## Technologies Used
 
@@ -197,19 +195,7 @@ fig = px.scatter(data, x="log2FC", y="lgpadj", color="cluster", hover_name="Gene
 st.plotly_chart(fig)
 ```
 
-## Data
-
-The application uses proteomics and phosphoproteomics data from lung cancer cell lines treated with various histone deacetylase inhibitors:
-
-- **Cell lines**: A549, H292, HCT116, PC9, PSC1
-- **Drugs**: Ralimetinib, CUDC101, Abexinostat, Vorinostat, TSA, Panobinostat, Belinostat
-- **Data types**: Total protein expression, phosphorylation sites, viability measurements
-
-## Contributing
+## Contributing and License
 
 This project is part of ongoing research at the Schweppe Lab under an MIT license. For questions or contributions, please contact the lab.
-
-## License
-
-Please cite appropriate publications when using this data viewer for research purposes.
 
