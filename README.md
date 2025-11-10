@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/1040376843.svg)](https://doi.org/10.5281/zenodo.17575823)
+
 # HDAC  Perturbation Data viewer
 
 An interactive web application for exploring lung cancer cell responses to epigenetic inhibition, built with **Streamlit** and **Plotly**.
